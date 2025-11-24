@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sooraj M.P — Gameplay Programmer</title>
+  <style>
+    :root{--accent:#6b46c1;--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071029 0%,#08111a 100%);color:#e6eef6}
+    .site{max-width:980px;margin:28px auto;padding:28px}
+    header{display:flex;gap:20px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#2a9d8f);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{margin:6px 0 18px;color:var(--muted)}
+    .row{display:grid;grid-template-columns:1fr 340px;gap:22px}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .section-title{font-size:0.95rem;margin:0 0 8px;color:#cfe4ff}
+    .systems{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .sys{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px}
+    .sys h4{margin:0 0 6px;font-size:1rem}
+    .sys p{margin:0;color:var(--muted);font-size:0.9rem}
+    .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;font-weight:600;cursor:pointer;color:#dfefff;text-decoration:none}
+    .hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden}
+    iframe{width:100%;height:100%;border:0}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;font-size:0.85rem;color:var(--muted)}
+    footer{margin-top:18px;color:var(--muted);font-size:0.9rem;text-align:center}
+    @media(max-width:880px){.row{grid-template-columns:1fr}.systems{grid-template-columns:1fr}.avatar{width:64px;height:64px}}
+    /* small helper styles for placeholders */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="site">
+    <header>
+      <div class="avatar">SM</div>
+      <div>
+        <h1>Sooraj M.P — Gameplay Programmer (Godot 4)</h1>
+        <p class="lead">I build movement controllers, camera systems, AI behaviours and interaction systems. I focus on clean, modular prototypes in Godot 4.</p>
+        <div class="links">
+          <a class="btn" href="mailto:YOUR_EMAIL_HERE">Email</a>
+          <a class="btn" href="YOUR_LINKEDIN_HERE" target="_blank">LinkedIn</a>
+          <a class="btn" href="YOUR_GITHUB_HERE" target="_blank">GitHub</a>
+          <a class="btn" href="YOUR_ITCH_IO_HERE" target="_blank">itch.io</a>
+        </div>
+      </div>
+    </header>
+
+    <div style="height:18px"></div>
+
+    <div class="row">
+      <section>
+        <div class="card">
+          <h3 class="section-title">Featured — Portfolio Video</h3>
+          <div class="hero-video">
+            <!-- Replace the src below with your YouTube video URL (embed link) -->
+            <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID" title="Portfolio video" allowfullscreen></iframe>
+          </div>
+          <p class="muted" style="margin-top:10px">Short, focused clips below show individual systems. Downloadable demos are hosted on itch.io (links in each card).</p>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card">
+          <h3 class="section-title">Gameplay Systems</h3>
+          <div class="systems">
+            <div class="sys">
+              <h4>Third-Person Camera System</h4>
+              <p>Smooth spring-arm camera with collision handling, shoulder swap and dynamic FOV. Built in Godot 4.</p>
+              <div style="height:8px"></div>
+              <a class="btn" href="YOUR_ITCH_CAMERA_LINK" target="_blank">Download</a>
+              <a class="btn" href="YOUR_GITHUB_CAMERA_LINK" target="_blank">Code</a>
+            </div>
+
+            <div class="sys">
+              <h4>Arcade Vehicle Controller</h4>
+              <p>Arcade-style driving with downhill/uphill response, drift tuning and force-based logic.</p>
+              <div style="height:8px"></div>
+              <a class="btn" href="YOUR_ITCH_VEHICLE_LINK" target="_blank">Download</a>
+              <a class="btn" href="YOUR_GITHUB_VEHICLE_LINK" target="_blank">Code</a>
+            </div>
+
+            <div class="sys">
+              <h4>2D Platformer Controller + AI</h4>
+              <p>Player controller with jump buffering, coyote time, and simple enemy patrol/chase AI.</p>
+              <div style="height:8px"></div>
+              <a class="btn" href="YOUR_ITCH_PLATFORMER_LINK" target="_blank">Download</a>
+              <a class="btn" href="YOUR_GITHUB_PLATFORMER_LINK" target="_blank">Code</a>
+            </div>
+
+            <div class="sys">
+              <h4>Cutscene & Dialogue System</h4>
+              <p>Sequenced cutscenes using AnimationPlayer and a lightweight dialogue trigger system.</p>
+              <div style="height:8px"></div>
+              <a class="btn" href="YOUR_ITCH_CUTSCENE_LINK" target="_blank">Download</a>
+              <a class="btn" href="YOUR_GITHUB_CUTSCENE_LINK" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card">
+          <h3 class="section-title">Projects</h3>
+          <p class="muted">Detective game — narrative prototype (Tom). Isometric narrative project. Platformer template for beginners.</p>
+          <div style="height:10px"></div>
+          <a class="btn" href="YOUR_ITCH_DETECTIVE_LINK" target="_blank">Detective — Download</a>
+          <a class="btn" href="YOUR_YOUTUBE_DETECTIVE_LINK" target="_blank">Detective — Video</a>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3 class="section-title">About Me</h3>
+          <p>I’m Sooraj, a gameplay programmer who loves building systems in Godot 4. I enjoy solving mechanical problems and iterating on prototypes quickly.</p>
+          <div style="height:10px"></div>
+          <h4 class="muted">Skills</h4>
+          <div class="skills">
+            <div class="chip">Gameplay Programming</div>
+            <div class="chip">Godot 4</div>
+            <div class="chip">GDScript</div>
+            <div class="chip">Blender</div>
+            <div class="chip">3D Modeling</div>
+            <div class="chip">AI & Scripting</div>
+            <div class="chip">AnimationPlayer</div>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h3 class="section-title">Contact</h3>
+          <p class="muted">Replace the placeholders in the HTML with your actual links before publishing.</p>
+          <div style="height:8px"></div>
+          <a class="btn" href="mailto:YOUR_EMAIL_HERE">Email</a>
+          <a class="btn" href="YOUR_LINKEDIN_HERE" target="_blank">LinkedIn</a>
+          <a class="btn" href="YOUR_ITCH_IO_HERE" target="_blank">itch.io</a>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h3 class="section-title">How to deploy</h3>
+          <ol class="muted">
+            <li>Create a GitHub repo named <code>your-username.github.io</code></li>
+            <li>Upload this <code>index.html</code> (and an optional assets folder)</li>
+            <li>In repo settings, enable GitHub Pages for the <code>main</code> branch</li>
+            <li>Your site will be live at <code>https://your-username.github.io</code></li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <small>Made with ❤️ • Replace placeholder links (YOUR_...) in the HTML before publishing.</small>
+    </footer>
+  </main>
+
+</body>
+</html>
