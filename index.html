@@ -4,76 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sooraj M.P — Gameplay Programmer</title>
+  <meta name="description" content="Portfolio of Sooraj M.P — Gameplay Programmer specializing in Godot and gameplay systems." />
   <style>
-    :root{
-      --accent:#6b46c1;
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#9aa4b2;
-      font-family:Inter,system-ui,Arial,Helvetica,sans-serif
-    }
+    :root{--accent:#6b46c1;--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--orange:#ff8a00;font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
     *{box-sizing:border-box}
-    html,body{
-      height:100%;
-      margin:0;
-      background:linear-gradient(180deg,#071029 0%,#08111a 100%);
-      color:#e6eef6;
-    }
-
-    /* --- Smoke particle effect --- */
-    .smoke-container {
-      position: fixed;
-      bottom: -20px;
-      left: 0;
-      width: 100%;
-      height: 140px;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    .smoke {
-      position: absolute;
-      bottom: 0;
-      width: 18px;
-      height: 18px;
-      background: rgba(180, 180, 180, 0.18);
-      border-radius: 50%;
-      filter: blur(7px);
-      animation: rise 4.5s linear infinite;
-      opacity: 0;
-    }
-
-    @keyframes rise {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.35;
-      }
-      60% {
-        opacity: 0.15;
-      }
-      100% {
-        transform: translateY(-170px) scale(1.9);
-        opacity: 0;
-      }
-    }
-
-    .site{max-width:980px;margin:28px auto;padding:28px}
-    header{display:flex;gap:20px;align-items:center}
-
-    /* Avatar with image */
-    .avatar{
-      width:84px;
-      height:84px;
-      border-radius:8px;
-      overflow:hidden;
-      background:#111;
-    }
-
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071029 0%,#08111a 100%);color:#e6eef6}
+    .site{max-width:980px;margin:28px auto;padding:28px;position:relative}
+    header{display:flex;gap:20px;align-items:center;position:relative;z-index:2}
+    .avatar-wrap{width:84px;height:84px;border-radius:10px;overflow:hidden;flex:0 0 84px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(135deg,var(--accent),#2a9d8f);display:flex;align-items:center;justify-content:center}
+    .avatar-img{width:100%;height:100%;object-fit:cover;display:block}
     h1{margin:0;font-size:1.6rem}
     p.lead{margin:6px 0 18px;color:var(--muted)}
     .row{display:grid;grid-template-columns:1fr 340px;gap:22px}
-    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .card{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
     .section-title{font-size:0.95rem;margin:0 0 8px;color:#cfe4ff}
     .systems{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .sys{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px}
@@ -86,43 +29,36 @@
     .skills{display:flex;flex-wrap:wrap;gap:8px}
     .chip{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;font-size:0.85rem;color:var(--muted)}
     footer{margin-top:18px;color:var(--muted);font-size:0.9rem;text-align:center}
-
-    @media(max-width:880px){
-      .row{grid-template-columns:1fr}
-      .systems{grid-template-columns:1fr}
-      .avatar{width:64px;height:64px}
-    }
-
+    @media(max-width:880px){.row{grid-template-columns:1fr}.systems{grid-template-columns:1fr}.avatar-wrap{width:64px;height:64px}}
     .muted{color:var(--muted)}
+
+    /* Hover polish */
+    .btn:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.14)}
+    .sys:hover{background:linear-gradient(180deg,rgba(255,255,255,0.06),transparent)}
+
+    /* Particle canvas styles */
+    .particle-canvas{position:absolute;inset:0;pointer-events:none;z-index:1}
+    /* small orange glow behind avatar */
+    .avatar-glow{position:absolute;left:20px;top:18px;width:120px;height:120px;border-radius:20px;filter:blur(18px);opacity:0.45;z-index:1;background:radial-gradient(circle at 30% 30%, rgba(255,138,0,0.9), rgba(255,138,0,0.25) 30%, transparent 60%)}
   </style>
 </head>
 <body>
-
-  <!-- Smoke particles -->
-  <div class="smoke-container">
-    <div class="smoke" style="left: 8%;  animation-delay: 0s;"></div>
-    <div class="smoke" style="left: 22%; animation-delay: 1.1s; transform: scale(1.4);"></div>
-    <div class="smoke" style="left: 37%; animation-delay: 0.5s; transform: scale(0.9);"></div>
-    <div class="smoke" style="left: 55%; animation-delay: 2s;"></div>
-    <div class="smoke" style="left: 71%; animation-delay: 0.8s; transform: scale(1.6);"></div>
-    <div class="smoke" style="left: 88%; animation-delay: 1.5s;"></div>
-  </div>
-
   <main class="site">
-    <header>
-      <div class="avatar">
-        <img src="https://via.placeholder.com/200x200.png?text=Your+Photo" 
-             alt="Avatar"
-             style="width:100%;height:100%;object-fit:cover;">
-      </div>
+    <!-- particle canvas (orange dust) -->
+    <canvas id="particles" class="particle-canvas" aria-hidden="true"></canvas>
 
+    <header>
+      <div class="avatar-wrap">
+        <!-- placeholder avatar image (replace assets/avatar.png with your file) -->
+        <img class="avatar-img" src="assets/avatar.png" alt="Sooraj" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2284%22 height=%2284%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%236b46c1%22/><text x=%2250%25%22 y=%2255%25%22 font-size=%2232%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22Arial%22 dy=%22.35em%22>SM</text></svg>'" />
+      </div>
       <div>
         <h1>Sooraj M.P — Gameplay Programmer</h1>
         <p class="lead">I Build gameplay systems.</p>
         <div class="links">
-          <a class="btn" href="https://www.linkedin.com/in/sooraj-mp-863503314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
-          <a class="btn" href="https://github.com/gameknight007" target="_blank">GitHub</a>
-          <a class="btn" href="https://dark-palette.itch.io/" target="_blank">itch.io</a>
+          <a class="btn" href="https://www.linkedin.com/in/sooraj-mp-863503314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/gameknight007" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn" href="https://dark-palette.itch.io/" target="_blank" rel="noopener noreferrer">itch.io</a>
         </div>
       </div>
     </header>
@@ -148,21 +84,21 @@
               <h4>Color dodge</h4>
               <p>2D endless scroller.</p>
               <div style="height:8px"></div>
-              <a class="btn" href="https://dark-palette.itch.io/colour-dodge" target="_blank">Download</a>
+              <a class="btn" href="https://dark-palette.itch.io/colour-dodge" target="_blank" rel="noopener noreferrer">Download</a>
             </div>
 
             <div class="sys">
               <h4>Cat with a gun</h4>
-              <p>Vampire survivor inspired shooter game.</p>
+              <p>Vampire survivor inspired shooter game .</p>
               <div style="height:8px"></div>
-              <a class="btn" href="https://dark-palette.itch.io/cat-with-a-gun" target="_blank">Download</a>
+              <a class="btn" href="https://dark-palette.itch.io/cat-with-a-gun" target="_blank" rel="noopener noreferrer">Download</a>
             </div>
 
             <div class="sys">
               <h4>2D Platformer template</h4>
-              <p>Basic player movement, jump, collectibles, patrol AI.</p>
+              <p>Basic playermovement , jump , collectiables , patrol AI.</p>
               <div style="height:8px"></div>
-              <a class="btn" href="https://dark-palette.itch.io/pixel-platformer-template" target="_blank">Download</a>
+              <a class="btn" href="https://dark-palette.itch.io/pixel-platformer-template" target="_blank" rel="noopener noreferrer">Download</a>
             </div>
           </div>
         </div>
@@ -190,17 +126,99 @@
           <h3 class="section-title">Contact</h3>
           <div style="height:8px"></div>
           <a class="btn" href="mailto:darkpalettegames@gmail.com">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/sooraj-mp-863503314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
-          <a class="btn" href="https://dark-palette.itch.io/" target="_blank">itch.io</a>
+          <a class="btn" href="https://www.linkedin.com/in/sooraj-mp-863503314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn" href="https://dark-palette.itch.io/" target="_blank" rel="noopener noreferrer">itch.io</a>
         </div>
       </aside>
     </div>
 
     <footer>
-      <small>@2025 sooraj.m.p</small>
+      <small>© 2025 Sooraj M.P</small>
     </footer>
   </main>
 
+  <script>
+    // Simple orange dust particle system on a full-page canvas
+    (function(){
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+      const particles = [];
+      const PARTICLE_COUNT = Math.floor((w*h)/90000); // scale with screen (approx)
+
+      function rand(min,max){ return Math.random()*(max-min)+min }
+
+      function createParticle(){
+        return {
+          x: rand(0,w),
+          y: rand(h*0.2, h),
+          vx: rand(-0.2,0.2),
+          vy: rand(-0.2,-1.0),
+          size: rand(1,4),
+          life: rand(60,180),
+          age:0,
+          hue: rand(24,38) // orange hues
+        }
+      }
+
+      function init(){
+        particles.length = 0;
+        for(let i=0;i<PARTICLE_COUNT;i++) particles.push(createParticle());
+      }
+
+      function resize(){
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        init();
+      }
+
+      window.addEventListener('resize', resize);
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        // subtle vignette
+        const grad = ctx.createLinearGradient(0,0,0,h);
+        grad.addColorStop(0,'rgba(7,16,41,0.0)');
+        grad.addColorStop(1,'rgba(8,17,26,0.25)');
+        ctx.fillStyle = grad; ctx.fillRect(0,0,w,h);
+
+        for(let p of particles){
+          p.x += p.vx;
+          p.y += p.vy;
+          p.age++;
+          const t = p.age / p.life;
+          const alpha = Math.max(0, 0.9*(1 - t));
+
+          // glow
+          const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.size*6);
+          const color = `hsl(${p.hue} 100% 55% / ${alpha})`;
+          g.addColorStop(0, color);
+          g.addColorStop(0.3, `hsl(${p.hue} 100% 45% / ${alpha*0.5})`);
+          g.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.size*6,0,Math.PI*2); ctx.fill();
+
+          // core
+          ctx.fillStyle = `hsl(${p.hue} 100% 60% / ${alpha})`;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+
+          if(p.age > p.life || p.x < -50 || p.x > w+50 || p.y < -50){
+            // reset particle to bottom area
+            Object.assign(p, createParticle());
+            p.y = rand(h*0.6, h+40);
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      // start
+      init();
+      requestAnimationFrame(draw);
+    })();
+  </script>
 </body>
 </html>
+
 
