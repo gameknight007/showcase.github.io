@@ -78,7 +78,7 @@
         <div style="height:14px"></div>
 
         <div class="card">
-          <h3 class="section-title">Gameplay Systems</h3>
+          <h3 class="section-title">PROJECTS </h3>
           <div class="systems">
             <div class="sys">
               <h4>Color dodge</h4>
@@ -107,7 +107,7 @@
       <aside>
         <div class="card">
           <h3 class="section-title">About Me</h3>
-          <p>I’m Sooraj, a gameplay programmer who loves building systems in Godot.</p>
+          <p>I’m Sooraj, a gameplay programmer who loves building gameplay systems in Godot.</p>
           <div style="height:10px"></div>
           <h4 class="muted">Skills</h4>
           <div class="skills">
@@ -138,14 +138,13 @@
   </main>
 
   <script>
-    // Simple orange dust particle system on a full-page canvas
     (function(){
       const canvas = document.getElementById('particles');
       const ctx = canvas.getContext('2d');
       let w = canvas.width = window.innerWidth;
       let h = canvas.height = window.innerHeight;
       const particles = [];
-      const PARTICLE_COUNT = Math.floor((w*h)/90000); // scale with screen (approx)
+      const PARTICLE_COUNT = Math.floor((w*h)/90000);
 
       function rand(min,max){ return Math.random()*(max-min)+min }
 
@@ -158,7 +157,7 @@
           size: rand(1,4),
           life: rand(60,180),
           age:0,
-          hue: rand(24,38) // orange hues
+          hue: rand(24,38) 
         }
       }
 
