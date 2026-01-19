@@ -35,11 +35,6 @@
     /* Hover polish */
     .btn:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.14)}
     .sys:hover{background:linear-gradient(180deg,rgba(255,255,255,0.06),transparent)}
-
-    /* Particle canvas styles */
-    .particle-canvas{position:absolute;inset:0;pointer-events:none;z-index:1}
-    /* small orange glow behind avatar */
-    .avatar-glow{position:absolute;left:20px;top:18px;width:120px;height:120px;border-radius:20px;filter:blur(18px);opacity:0.45;z-index:1;background:radial-gradient(circle at 30% 30%, rgba(255,138,0,0.9), rgba(255,138,0,0.25) 30%, transparent 60%)}
   </style>
 </head>
 <body>
@@ -80,6 +75,13 @@
         <div class="card">
           <h3 class="section-title">PROJECTS </h3>
           <div class="systems">
+            <div class="sys">
+              <h4>Route 5</h4>
+              <p>2D stealth platformer</p>
+              <div style="height:8px"></div>
+              <a class="btn" href="https://dark-palette.itch.io/route-5" target="_blank" rel="noopener noreferrer">Download</a>
+            </div>
+            
             <div class="sys">
               <h4>Color dodge</h4>
               <p>2D endless scroller.</p>
@@ -136,87 +138,6 @@
       <small>© 2025 Sooraj M.P</small>
     </footer>
   </main>
-
-  <script>
-    (function(){
-      const canvas = document.getElementById('particles');
-      const ctx = canvas.getContext('2d');
-      let w = canvas.width = window.innerWidth;
-      let h = canvas.height = window.innerHeight;
-      const particles = [];
-      const PARTICLE_COUNT = Math.floor((w*h)/90000);
-
-      function rand(min,max){ return Math.random()*(max-min)+min }
-
-      function createParticle(){
-        return {
-          x: rand(0,w),
-          y: rand(h*0.2, h),
-          vx: rand(-0.2,0.2),
-          vy: rand(-0.2,-1.0),
-          size: rand(1,4),
-          life: rand(60,180),
-          age:0,
-          hue: rand(24,38) 
-        }
-      }
-
-      function init(){
-        particles.length = 0;
-        for(let i=0;i<PARTICLE_COUNT;i++) particles.push(createParticle());
-      }
-
-      function resize(){
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-        init();
-      }
-
-      window.addEventListener('resize', resize);
-
-      function draw(){
-        ctx.clearRect(0,0,w,h);
-        // subtle vignette
-        const grad = ctx.createLinearGradient(0,0,0,h);
-        grad.addColorStop(0,'rgba(7,16,41,0.0)');
-        grad.addColorStop(1,'rgba(8,17,26,0.25)');
-        ctx.fillStyle = grad; ctx.fillRect(0,0,w,h);
-
-        for(let p of particles){
-          p.x += p.vx;
-          p.y += p.vy;
-          p.age++;
-          const t = p.age / p.life;
-          const alpha = Math.max(0, 0.9*(1 - t));
-
-          // glow
-          const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.size*6);
-          const color = `hsl(${p.hue} 100% 55% / ${alpha})`;
-          g.addColorStop(0, color);
-          g.addColorStop(0.3, `hsl(${p.hue} 100% 45% / ${alpha*0.5})`);
-          g.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.fillStyle = g;
-          ctx.beginPath(); ctx.arc(p.x,p.y,p.size*6,0,Math.PI*2); ctx.fill();
-
-          // core
-          ctx.fillStyle = `hsl(${p.hue} 100% 60% / ${alpha})`;
-          ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
-
-          if(p.age > p.life || p.x < -50 || p.x > w+50 || p.y < -50){
-            // reset particle to bottom area
-            Object.assign(p, createParticle());
-            p.y = rand(h*0.6, h+40);
-          }
-        }
-
-        requestAnimationFrame(draw);
-      }
-
-      // start
-      init();
-      requestAnimationFrame(draw);
-    })();
-  </script>
 </body>
 </html>
 
